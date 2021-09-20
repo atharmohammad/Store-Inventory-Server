@@ -10,7 +10,7 @@ const server = http.createServer(app);
 //Applying the middlewares
 app.use(
   cors({
-      "origin": process.env.CORS_ORIGIN,
+      "origin": '*',
       "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
       "preflightContinue": false,
       "optionsSuccessStatus": 200

@@ -2,6 +2,11 @@ const mongoose = require('mongoose')
 
 const schema = new mongoose.Schema(
     {   
+        Name:{
+            type:String,
+            trim:true,
+            required:true,
+        },
         OwnerName:{
             type:String,
             trim:true,

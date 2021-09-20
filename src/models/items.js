@@ -7,18 +7,28 @@ const schema = new mongoose.Schema(
             trim:true,
             required:true
         },
-        Barcode:{
-            type:String,
-            default:"",
-        },
         Description:{
             type:String,
             trim:true,
             default:"",
         },
+        Handlername:{
+            type: String,
+            trim: true,
+            required:true,
+        },
+        Cost:{
+            type:Number,
+            default:0
+        },
         Quantity:{
             type:Number,
             default:0
+        },
+        Type:{
+            type:String,
+            default:"incoming",
+            required:true
         },
         Shop:{
             type:mongoose.Schema.Types.ObjectId,
@@ -28,5 +38,5 @@ const schema = new mongoose.Schema(
     }
 )
 
-const table = mongoose.model('Goods',schema);
+const table = mongoose.model('Item',schema);
 module.exports = table;

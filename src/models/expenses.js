@@ -7,16 +7,11 @@ const schema = new mongoose.Schema(
             trim:true,
             required:true
         },
-        Barcode:{
-            type:String,
-            default:"",
+        Date:{
+            type:Date,
+            default:new Date()
         },
-        Description:{
-            type:String,
-            trim:true,
-            default:"",
-        },
-        Quantity:{
+        Amount:{
             type:Number,
             default:0
         },
