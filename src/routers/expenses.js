@@ -1,42 +1,42 @@
 const express = require('express');
 const router = new express.Router();
-const Goods = require('../models/goods')
+const Expenses = require('../models/expenses')
 const auth = require('../middlewares/Auth')
 
-router.get('/goods',auth,async(req,res,next)=>{
+router.get('/expenses',auth,async(req,res,next)=>{
     try{
-        const goods = await Goods.find({Shop:req.shop._id , Deleted:false})
-        return res.status(200).send(goods);
+        const expenses = await Expenses.find({Shop:req.shop._id , Deleted:false})
+        return res.status(200).send(expenses);
     }catch(e){
         console.log(e);
         return res.status(400).send(e);
     }
 })
 
-router.post('/createGoods',auth,async(req,res,next)=>{
+router.post('/createExpense',auth,async(req,res,next)=>{
     try{
-        const goods = new Goods({
+        const expenses = new Expenses({
             ...req.body,
             Shop:req.shop
         });
 
-        await goods.save();
-        return res.status(200).send(goods);
+        await expenses.save();
+        return res.status(200).send(expenses);
     }catch(e){
         console.log(e);
         return res.status(400).send(e);
     }
 })
 
-router.delete('/goods/:id',auth,async(req,res,next)=>{
+router.delete('/expenses/:id',auth,async(req,res,next)=>{
     try{
         const id = req.params.id;
-        const goods = await Goods.findOne({_id:id,Deleted:false});
-        if(!goods){
+        const expenses = await Expenses.findOne({_id:id,Deleted:false});
+        if(!expenses){
             throw Error("Item dont exist");
         }
-        goods.Deleted = true;
-        await goods.save();
+        expenses.Deleted = true;
+        await expenses.save();
         return res.status(200).send();
     }catch(e){
         console.log(e);

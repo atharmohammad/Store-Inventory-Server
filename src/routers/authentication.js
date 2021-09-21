@@ -1,6 +1,6 @@
 const express = require('express');
 const router = new express.Router();
-const Shop = require('../models/');
+const Shop = require('../models/shops');
 const auth = require("../middlewares/Auth");
 
 router.post('/login',async(req,res,next)=>{
@@ -27,3 +27,5 @@ router.get('/logout',auth,async(req,res,next)=>{
         return res.status(400).send();
     }
 });
+
+module.exports = router;

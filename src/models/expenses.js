@@ -27,5 +27,5 @@ const schema = new mongoose.Schema(
     }
 )
 
-const table = mongoose.model('Goods',schema);
+const table = mongoose.model('Expenses',schema);
 module.exports = table;

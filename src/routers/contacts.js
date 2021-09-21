@@ -1,6 +1,6 @@
 const express = require('express');
 const router = new express.Router();
-const Contacts = requre('../models/contacts')
+const Contacts = require('../models/contacts')
 const auth = require('../middlewares/Auth')
 
 router.get('/contacts',auth,async(req,res,next)=>{
@@ -44,3 +44,4 @@ router.delete('/contacts/:id',auth,async(req,res,next)=>{
     }
 });
 
+module.exports = router;
