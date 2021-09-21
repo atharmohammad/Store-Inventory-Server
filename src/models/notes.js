@@ -11,6 +11,10 @@ const schema = new mongoose.Schema(
             type:mongoose.Schema.Types.ObjectId,
             ref:'Shop',
             required:true
+        },
+        Deleted:{
+            type:Boolean,
+            default:false
         }
     }
 )
