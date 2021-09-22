@@ -2,17 +2,17 @@ const mongoose = require('mongoose')
 
 const schema = new mongoose.Schema(
     {   
-        Name:{
+        ShopName:{
             type:String,
             trim:true,
             required:true,
         },
-        OwnerName:{
+        Owner:{
             type:String,
             trim:true,
             required:true
         },
-        ShopName:{
+        UserName:{
             type:String,
             trim:true,
             required:true,
