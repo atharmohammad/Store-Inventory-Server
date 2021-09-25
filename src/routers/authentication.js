@@ -5,7 +5,7 @@ const auth = require("../middlewares/Auth");
 
 router.post('/login',async(req,res,next)=>{
     try{
-        const ShopName = req.body.UserName;
+        const UserName = req.body.UserName;
         const Password = req.body.Password;
 
         const shop = await Shop.findByCredentials(UserName,Password);
