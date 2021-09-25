@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
-
+const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 const schema = new mongoose.Schema(
     {   
         ShopName:{
@@ -50,8 +51,8 @@ schema.methods.generateToken = async function(){
     return token;
 }
 
-schema.statics.findByCredentials = async function(ShopName,Password){
-    const shop = await this.model('Shop').findOne({ShopName:ShopName});
+schema.statics.findByCredentials = async function(UserName,Password){
+    const shop = await this.model('Shop').findOne({UserName:UserName});
     if(!shop){
       throw new Error ('store not found!');
     }
@@ -69,7 +70,7 @@ schema.statics.findByCredentials = async function(ShopName,Password){
 schema.pre('save',async function(next){
     const shop = this;
     if(shop.isModified('Password')){
-      shop.password = await bcrypt.hash(shop.password,8);
+      shop.Password = await bcrypt.hash(shop.Password,8);
     }
     next();
 })
